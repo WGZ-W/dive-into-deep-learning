@@ -228,7 +228,8 @@ def accuracy(y_hat, y):
 
     Defined in :numref:`sec_softmax_scratch`"""
     if len(y_hat.shape) > 1 and y_hat.shape[1] > 1:
-        y_hat = d2l.argmax(y_hat, axis=1)
+        # y_hat = d2l.argmax(y_hat, axis=1)
+        y_hat = torch.argmax(y_hat, dim=1)
     cmp = d2l.astype(y_hat, y.dtype) == y
     return float(d2l.reduce_sum(d2l.astype(cmp, y.dtype)))
 
